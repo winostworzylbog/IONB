@@ -1,0 +1,145 @@
+@startuml
+
+title __AIRPORTMANAGER-WEB's Class Diagram__\n
+
+
+    namespace l.edu.uj.ii.ionb.airportmanager.web.beans {
+      class pl.edu.uj.ii.ionb.airportmanager.web.beans.AirplaneActionBean {
+      }
+    }
+
+  
+
+
+    namespace l.edu.uj.ii.ionb.airportmanager.web.beans {
+      abstract class pl.edu.uj.ii.ionb.airportmanager.web.beans.BaseActionBean {
+      }
+    }
+
+  
+
+
+    namespace l.edu.uj.ii.ionb.airportmanager.web.beans {
+      class pl.edu.uj.ii.ionb.airportmanager.web.beans.DestinationsActionBean {
+      }
+    }
+
+  
+
+
+    namespace l.edu.uj.ii.ionb.airportmanager.web.beans {
+      class pl.edu.uj.ii.ionb.airportmanager.web.beans.FlightsActionBean {
+      }
+    }
+
+  
+
+
+    namespace l.edu.uj.ii.ionb.airportmanager.web.beans {
+      class pl.edu.uj.ii.ionb.airportmanager.web.beans.StewardsActionBean {
+      }
+    }
+
+  
+
+
+    namespace l.edu.uj.ii.ionb.airportmanager.web.filters {
+      class pl.edu.uj.ii.ionb.airportmanager.web.filters.EncFilter {
+      }
+    }
+
+  
+
+
+    namespace l.edu.uj.ii.ionb.airportmanager.web.rest.server {
+      class pl.edu.uj.ii.ionb.airportmanager.web.rest.server.AirplaneRestApi {
+      }
+    }
+
+  
+
+
+    namespace l.edu.uj.ii.ionb.airportmanager.web.rest.server {
+      class pl.edu.uj.ii.ionb.airportmanager.web.rest.server.DestinationRestApi {
+      }
+    }
+
+  
+
+
+    namespace l.edu.uj.ii.ionb.airportmanager.web.userservice {
+      class pl.edu.uj.ii.ionb.airportmanager.web.userservice.AirportManagerUserService {
+      }
+    }
+
+  
+
+
+    namespace l.edu.uj.ii.ionb.airportmanager.web.userservice {
+      class pl.edu.uj.ii.ionb.airportmanager.web.userservice.CannotCreateUserException {
+      }
+    }
+
+  
+
+
+    namespace l.edu.uj.ii.ionb.airportmanager.web.userservice {
+      class pl.edu.uj.ii.ionb.airportmanager.web.userservice.InvalidUsernameException {
+      }
+    }
+
+  
+
+
+    namespace l.edu.uj.ii.ionb.airportmanager.web.userservice {
+      class pl.edu.uj.ii.ionb.airportmanager.web.userservice.UserActionBean {
+      }
+    }
+
+  
+
+
+    namespace l.edu.uj.ii.ionb.airportmanager.web.userservice {
+      class pl.edu.uj.ii.ionb.airportmanager.web.userservice.UserAlreadyExistsException {
+      }
+    }
+
+  
+
+  pl.edu.uj.ii.ionb.airportmanager.web.beans.AirplaneActionBean .up.|> net.sourceforge.stripes.validation.ValidationErrorHandler
+  pl.edu.uj.ii.ionb.airportmanager.web.beans.AirplaneActionBean -up-|> pl.edu.uj.ii.ionb.airportmanager.web.beans.BaseActionBean
+  pl.edu.uj.ii.ionb.airportmanager.web.beans.AirplaneActionBean o-- pl.edu.uj.ii.ionb.airportmanager.services.AirplaneService : airplaneService
+  pl.edu.uj.ii.ionb.airportmanager.web.beans.AirplaneActionBean o-- pl.edu.uj.ii.ionb.airportmanager.transferobjects.AirplaneTO : airplane
+  pl.edu.uj.ii.ionb.airportmanager.web.beans.BaseActionBean .up.|> net.sourceforge.stripes.action.ActionBean
+  pl.edu.uj.ii.ionb.airportmanager.web.beans.DestinationsActionBean .up.|> net.sourceforge.stripes.validation.ValidationErrorHandler
+  pl.edu.uj.ii.ionb.airportmanager.web.beans.DestinationsActionBean -up-|> pl.edu.uj.ii.ionb.airportmanager.web.beans.BaseActionBean
+  pl.edu.uj.ii.ionb.airportmanager.web.beans.DestinationsActionBean o-- pl.edu.uj.ii.ionb.airportmanager.services.DestinationService : destinationService
+  pl.edu.uj.ii.ionb.airportmanager.web.beans.DestinationsActionBean o-- pl.edu.uj.ii.ionb.airportmanager.transferobjects.DestinationTO : destination
+  pl.edu.uj.ii.ionb.airportmanager.web.beans.FlightsActionBean -up-|> pl.edu.uj.ii.ionb.airportmanager.web.beans.BaseActionBean
+  pl.edu.uj.ii.ionb.airportmanager.web.beans.FlightsActionBean o-- pl.edu.uj.ii.ionb.airportmanager.services.AirplaneService : airService
+  pl.edu.uj.ii.ionb.airportmanager.web.beans.FlightsActionBean o-- pl.edu.uj.ii.ionb.airportmanager.services.DestinationService : desService
+  pl.edu.uj.ii.ionb.airportmanager.web.beans.FlightsActionBean o-- pl.edu.uj.ii.ionb.airportmanager.transferobjects.FlightTO : flight
+  pl.edu.uj.ii.ionb.airportmanager.web.beans.FlightsActionBean o-- pl.edu.uj.ii.ionb.airportmanager.services.FlightService : flightService
+  pl.edu.uj.ii.ionb.airportmanager.web.beans.FlightsActionBean o-- pl.edu.uj.ii.ionb.airportmanager.services.StewardService : stewService
+  pl.edu.uj.ii.ionb.airportmanager.web.beans.StewardsActionBean -up-|> pl.edu.uj.ii.ionb.airportmanager.web.beans.BaseActionBean
+  pl.edu.uj.ii.ionb.airportmanager.web.beans.StewardsActionBean o-- pl.edu.uj.ii.ionb.airportmanager.services.FlightService : flightService
+  pl.edu.uj.ii.ionb.airportmanager.web.beans.StewardsActionBean o-- pl.edu.uj.ii.ionb.airportmanager.services.StewardService : stewService
+  pl.edu.uj.ii.ionb.airportmanager.web.beans.StewardsActionBean o-- pl.edu.uj.ii.ionb.airportmanager.transferobjects.StewardTO : steward
+  pl.edu.uj.ii.ionb.airportmanager.web.filters.EncFilter .up.|> javax.servlet.Filter
+  pl.edu.uj.ii.ionb.airportmanager.web.rest.server.AirplaneRestApi o-- pl.edu.uj.ii.ionb.airportmanager.services.AirplaneService : airService
+  pl.edu.uj.ii.ionb.airportmanager.web.rest.server.DestinationRestApi o-- pl.edu.uj.ii.ionb.airportmanager.services.DestinationService : destService
+  pl.edu.uj.ii.ionb.airportmanager.web.userservice.AirportManagerUserService .up.|> org.springframework.security.core.userdetails.UserDetailsService
+  pl.edu.uj.ii.ionb.airportmanager.web.userservice.InvalidUsernameException -up-|> pl.edu.uj.ii.ionb.airportmanager.web.userservice.CannotCreateUserException
+  pl.edu.uj.ii.ionb.airportmanager.web.userservice.UserActionBean -up-|> pl.edu.uj.ii.ionb.airportmanager.web.beans.BaseActionBean
+  pl.edu.uj.ii.ionb.airportmanager.web.userservice.UserActionBean o-- pl.edu.uj.ii.ionb.airportmanager.web.userservice.AirportManagerUserService : userService
+  pl.edu.uj.ii.ionb.airportmanager.web.userservice.UserAlreadyExistsException -up-|> pl.edu.uj.ii.ionb.airportmanager.web.userservice.CannotCreateUserException
+
+
+right footer
+
+
+PlantUML diagram generated by SketchIt! (https://bitbucket.org/pmesmeur/sketch.it)
+For more information about this tool, please contact philippe.mesmeur@gmail.com
+endfooter
+
+@enduml

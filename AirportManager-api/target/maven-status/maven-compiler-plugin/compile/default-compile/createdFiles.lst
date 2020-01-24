@@ -1,0 +1,8 @@
+pl\edu\uj\ii\ionb\airportmanager\services\StewardService.class
+pl\edu\uj\ii\ionb\airportmanager\services\DestinationService.class
+pl\edu\uj\ii\ionb\airportmanager\transferobjects\AirplaneTO.class
+pl\edu\uj\ii\ionb\airportmanager\services\FlightService.class
+pl\edu\uj\ii\ionb\airportmanager\transferobjects\DestinationTO.class
+pl\edu\uj\ii\ionb\airportmanager\transferobjects\StewardTO.class
+pl\edu\uj\ii\ionb\airportmanager\services\AirplaneService.class
+pl\edu\uj\ii\ionb\airportmanager\transferobjects\FlightTO.class

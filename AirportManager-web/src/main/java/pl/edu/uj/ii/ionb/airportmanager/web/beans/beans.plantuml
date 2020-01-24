@@ -1,0 +1,182 @@
+@startuml
+
+title __BEANS's Class Diagram__\n
+
+
+    namespace l.edu.uj.ii.ionb.airportmanager.web.beans {
+      class pl.edu.uj.ii.ionb.airportmanager.web.beans.AirplaneActionBean {
+          {static} ~ log : Logger
+          - airplanes : List<AirplaneTO>
+          - err : LocalizableError
+          - flights : List<FlightTO>
+          + add()
+          + delete()
+          + edit()
+          + getAirplane()
+          + getAirplanes()
+          + getFlights()
+          + handleValidationErrors()
+          + list()
+          + listFlights()
+          + loadAirplaneFromDatabase()
+          + save()
+          + setAirplane()
+          + setFlights()
+      }
+    }
+
+  
+
+
+    namespace l.edu.uj.ii.ionb.airportmanager.web.beans {
+      abstract class pl.edu.uj.ii.ionb.airportmanager.web.beans.BaseActionBean {
+          - context : ActionBeanContext
+          {static} + escapeHTML()
+          + getContext()
+          + setContext()
+      }
+    }
+
+  
+
+
+    namespace l.edu.uj.ii.ionb.airportmanager.web.beans {
+      class pl.edu.uj.ii.ionb.airportmanager.web.beans.DestinationsActionBean {
+          {static} ~ log : Logger
+          - destinations : List<DestinationTO>
+          - flights : List<FlightTO>
+          + cancel()
+          + createDestination()
+          + deleteDestination()
+          + edit()
+          + getAllIncomingFlights()
+          + getAllOutcomingFlights()
+          + getDestination()
+          + getDestinations()
+          + getFlights()
+          + handleValidationErrors()
+          + list()
+          + loadDestinationFromDatabase()
+          + setDestination()
+          + updateDestination()
+      }
+    }
+
+  
+
+
+    namespace l.edu.uj.ii.ionb.airportmanager.web.beans {
+      class pl.edu.uj.ii.ionb.airportmanager.web.beans.FlightsActionBean {
+          - airList : List<AirplaneTO>
+          - airplane : String
+          - arrdate : String
+          - arrtime : String
+          - depdate : String
+          - deptime : String
+          - desList : List<DestinationTO>
+          - flights : List<FlightTO>
+          - notexecute : boolean
+          - origin : String
+          - stewList : List<StewardTO>
+          - target : String
+          + addNewFlight()
+          + createFlightFormular()
+          + doNothing()
+          + edit()
+          + getAirList()
+          + getAirplane()
+          + getArrdate()
+          + getArrtime()
+          + getDepdate()
+          + getDeptime()
+          + getDesList()
+          + getFlight()
+          + getFlights()
+          + getOrigin()
+          + getStewList()
+          + getTarget()
+          + listFlights()
+          + loadFlight()
+          + removeFlight()
+          + setAirList()
+          + setAirplane()
+          + setArrdate()
+          + setArrtime()
+          + setDepdate()
+          + setDeptime()
+          + setDesList()
+          + setFlight()
+          + setFlights()
+          + setOrigin()
+          + setStewList()
+          + setTarget()
+          + stringToTimestampEN()
+          + stringToTimestampSK()
+          + updateFlight()
+          + valid()
+          - formatDateStamp()
+          - formatTimeStamp()
+          - getIdOfEntity()
+          - prepareFlight()
+      }
+    }
+
+  
+
+
+    namespace l.edu.uj.ii.ionb.airportmanager.web.beans {
+      class pl.edu.uj.ii.ionb.airportmanager.web.beans.StewardsActionBean {
+          - flights : List<FlightTO>
+          - stewards : List<StewardTO>
+          + addNewSteward()
+          + addStewardsFlight()
+          + createFormular()
+          + doNothing()
+          + editFormular()
+          + getFlights()
+          + getSteward()
+          + getStewards()
+          + loadFlight()
+          + loadSteward()
+          + removeSteward()
+          + removeStewardsFlight()
+          + saveStewardsEdit()
+          + setSteward()
+          + showAllStewardsFlights()
+          + showStewardsFlightToAdd()
+          + showStewardsList()
+          - getRemainingFights()
+      }
+    }
+
+  
+
+  pl.edu.uj.ii.ionb.airportmanager.web.beans.AirplaneActionBean .up.|> net.sourceforge.stripes.validation.ValidationErrorHandler
+  pl.edu.uj.ii.ionb.airportmanager.web.beans.AirplaneActionBean -up-|> pl.edu.uj.ii.ionb.airportmanager.web.beans.BaseActionBean
+  pl.edu.uj.ii.ionb.airportmanager.web.beans.AirplaneActionBean o-- pl.edu.uj.ii.ionb.airportmanager.services.AirplaneService : airplaneService
+  pl.edu.uj.ii.ionb.airportmanager.web.beans.AirplaneActionBean o-- pl.edu.uj.ii.ionb.airportmanager.transferobjects.AirplaneTO : airplane
+  pl.edu.uj.ii.ionb.airportmanager.web.beans.BaseActionBean .up.|> net.sourceforge.stripes.action.ActionBean
+  pl.edu.uj.ii.ionb.airportmanager.web.beans.DestinationsActionBean .up.|> net.sourceforge.stripes.validation.ValidationErrorHandler
+  pl.edu.uj.ii.ionb.airportmanager.web.beans.DestinationsActionBean -up-|> pl.edu.uj.ii.ionb.airportmanager.web.beans.BaseActionBean
+  pl.edu.uj.ii.ionb.airportmanager.web.beans.DestinationsActionBean o-- pl.edu.uj.ii.ionb.airportmanager.services.DestinationService : destinationService
+  pl.edu.uj.ii.ionb.airportmanager.web.beans.DestinationsActionBean o-- pl.edu.uj.ii.ionb.airportmanager.transferobjects.DestinationTO : destination
+  pl.edu.uj.ii.ionb.airportmanager.web.beans.FlightsActionBean -up-|> pl.edu.uj.ii.ionb.airportmanager.web.beans.BaseActionBean
+  pl.edu.uj.ii.ionb.airportmanager.web.beans.FlightsActionBean o-- pl.edu.uj.ii.ionb.airportmanager.services.AirplaneService : airService
+  pl.edu.uj.ii.ionb.airportmanager.web.beans.FlightsActionBean o-- pl.edu.uj.ii.ionb.airportmanager.services.DestinationService : desService
+  pl.edu.uj.ii.ionb.airportmanager.web.beans.FlightsActionBean o-- pl.edu.uj.ii.ionb.airportmanager.transferobjects.FlightTO : flight
+  pl.edu.uj.ii.ionb.airportmanager.web.beans.FlightsActionBean o-- pl.edu.uj.ii.ionb.airportmanager.services.FlightService : flightService
+  pl.edu.uj.ii.ionb.airportmanager.web.beans.FlightsActionBean o-- pl.edu.uj.ii.ionb.airportmanager.services.StewardService : stewService
+  pl.edu.uj.ii.ionb.airportmanager.web.beans.StewardsActionBean -up-|> pl.edu.uj.ii.ionb.airportmanager.web.beans.BaseActionBean
+  pl.edu.uj.ii.ionb.airportmanager.web.beans.StewardsActionBean o-- pl.edu.uj.ii.ionb.airportmanager.services.FlightService : flightService
+  pl.edu.uj.ii.ionb.airportmanager.web.beans.StewardsActionBean o-- pl.edu.uj.ii.ionb.airportmanager.services.StewardService : stewService
+  pl.edu.uj.ii.ionb.airportmanager.web.beans.StewardsActionBean o-- pl.edu.uj.ii.ionb.airportmanager.transferobjects.StewardTO : steward
+
+
+right footer
+
+
+PlantUML diagram generated by SketchIt! (https://bitbucket.org/pmesmeur/sketch.it)
+For more information about this tool, please contact philippe.mesmeur@gmail.com
+endfooter
+
+@enduml
